@@ -1,0 +1,24 @@
+
+.card {
+    background-color: $card-bg;
+    border: $card-border;
+    width:250px;
+    margin: 0 auto;
+  }
+
+.card-header {
+    background-color: $card-bg;
+    border: $card-border;
+    text-align: center;
+    color: $logo-color;
+    font-size: 1.5em;
+    font-family: $logo-font-family;
+}
+
+$newBtnColor:$logo-color;
+.btn-primary {
+    @include button-variant($newBtnColor, darken($newBtnColor, 7.5%), darken($newBtnColor, 10%), lighten($newBtnColor,5%), lighten($newBtnColor, 10%), darken($newBtnColor,30%));
+}
+.btn-outline-primary {
+    @include button-outline-variant($newBtnColor, #222222, lighten($newBtnColor,5%), $newBtnColor);
+}

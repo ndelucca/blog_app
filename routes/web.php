@@ -12,19 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 /*
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
 Route::resource('posts','PostsController');
-Route::fallback('PagesController@fallback');
+
 */
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::fallback('PagesController@fallback');
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');

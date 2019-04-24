@@ -1,6 +1,7 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Fresca');
 
 // Variables
 @import 'variables';
@@ -9,6 +10,10 @@
 @import '~bootstrap/scss/bootstrap';
 
 .navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  background-color: $nav-bg;
+  box-shadow: 0 1px 2px rgba(0, 0, 5, 0.3);
 }
+
+@import 'blog.scss';
+
+@import 'bootstrapOverride.scss';
