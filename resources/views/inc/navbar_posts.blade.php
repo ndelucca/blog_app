@@ -10,9 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="/home">Dash</a></li>
                 <li class="nav-item"><a class="nav-link" href="/posts">Posts</a></li>
-                
             </ul>
             
             <!-- Right Side Of Navbar -->
@@ -40,7 +38,11 @@
                                              document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
-
+                            <a class="dropdown-item" href="{{ route('home') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                Dash
+                            </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>

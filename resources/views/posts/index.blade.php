@@ -27,6 +27,12 @@
             <div class="post post-container">
                 <p>{!!$post->body!!}</p>
             </div>
+            @if($post->file_type == "img")
+            <div class="post-container">
+                <a href="/storage/file_img/{{$post->file}}"><img style="width:100%;text-align:center;" src="/storage/file_img/{{$post->file}}"></a>
+            </div>
+            @endif
+            
             <div class="post-footer post-container">
                 <small>Created at {{$post->created_at}} by <a href="{{ action('UsersController@show',$post->user->id)}}">{{$post->user->name}}</a></small>
             </div>
