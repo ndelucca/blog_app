@@ -10690,17 +10690,60 @@ a.text-dark:focus {
   text-align: center;
 }
 
-.edit-remove-container {
-  position: absolute;
-  top: 1em;
-  right: 1em;
+.post-container {
+  width: 100%;
+  min-width: 340px;
 }
 
-.edit-remove-container a,
-.edit-remove-container button {
-  width: 2.5em;
-  height: 2.5em;
-  margin: 0px 0 5px 0;
+.post-header {
+  display: table;
+  white-space: nowrap;
+  background-color: #f5f5fa;
+  color: rgba(10, 50, 100, 0.9);
+  font-family: "Fresca";
+  height: 2em;
+}
+
+.post-title {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 1.5em;
+  padding-left: 10px;
+}
+
+.post-controls {
+  display: table-cell;
+  width: 4em;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.post-controls .post-btn {
+  float: right;
+}
+
+.post-btn {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  color: rgba(10, 50, 100, 0.9);
+  border: 0;
+  padding: 0;
+  margin: 0.25em;
+  background-color: transparent;
+}
+
+.post-btn :hover {
+  background-color: rgba(0, 0, 0, 0.125);
+  text-decoration: none !important;
+}
+
+.post {
+  padding-left: 10px;
+}
+
+.post-footer {
+  text-align: right;
 }
 
 .card {

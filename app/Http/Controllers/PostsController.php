@@ -14,8 +14,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::where([['user_id','=',auth()->user()->id]])->orderBy('created_at','desc')->paginate(10);
-
+        $posts = Post::with('user')->orderBy('created_at','desc')->paginate(10);
+        //where([['user_id','=',auth()->user()->id]])->
+        //echo json_encode($posts);
         return view('posts.index')->with('posts',$posts);
     }
 
@@ -105,9 +106,9 @@ class PostsController extends Controller
         $post = Post::find($id);
 
         // Check for correct user
-        // if(auth()->user()->id !== $post->user_id){
-        //     return redirect('/post')->with('error','Unauthorized Page');
-        // }
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/post')->with('error','Unauthorized Page');
+        }
         return view('posts.edit')->with('post',$post);
     }
 
@@ -145,9 +146,9 @@ class PostsController extends Controller
         $post = Post::find($id);
 
         // Check for correct user
-        // if(auth()->user()->id !== $post->user_id){
-        //     return redirect('/post')->with('error','Unauthorized Page');
-        // }
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/post')->with('error','Unauthorized Page');
+        }
 
         // if($post->cover_image != 'noimage.jpg'){
         //     //Delete Image

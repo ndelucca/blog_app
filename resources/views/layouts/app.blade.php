@@ -10,7 +10,10 @@
     <title>{{ config('app.name', 'blogApp') }}</title>
 
     <!-- Scripts -->
+    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+    <!-- 
     <script src="{{ asset('js/app.js') }}" defer></script>
+    -->
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <!-- Styles -->
@@ -24,5 +27,9 @@
             @yield('content')
         </main>
     </div>
+    
+    <script>
+        CKEDITOR.replace( 'summary-ckeditor' );
+    </script>
 </body>
 </html>

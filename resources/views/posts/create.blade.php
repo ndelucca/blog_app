@@ -3,7 +3,6 @@
 @include('inc.navbar_posts')
 @endsection
 @section('content')
-<?php $visibility = "friends";?>
 <div class="container">
     <form class="card" enctype="multipart/form-data" method="POST" accept-charset="UTF-8" action="{{ route('posts.store') }}">
         @csrf
@@ -12,8 +11,8 @@
             <input class="form-control" type="text" name="title" id="title">
         </fieldset>
         <fieldset class="form-group row">
-            <label for="body">Post</label>
-            <textarea class="form-control" rows="6" cols="50" maxlength="300" name="body" id="body"></textarea>
+            <label for="summary-ckeditor">Post</label>
+            <textarea class="form-control" rows="6" cols="50" maxlength="300" name="body" id="summary-ckeditor"></textarea>
         </fieldset>
         <fieldset class="form-group row" hidden>
             <label for="file_img">File</label>
@@ -29,8 +28,8 @@
         </fieldset>
         <fieldset class="form-group row">
             <label for="visibility_select">Visibility</label>
-            <select id="visibility_select" class="custom-select">
-                @include('posts.inc.visibility_options',['visibility' => $visibility])
+            <select id="visibility_select" class="custom-select" name="visibility">
+                @include('posts.inc.visibility_options',['visibility' => 'public'])
             </select>
         </fieldset>
         <fieldset class="form-group row">

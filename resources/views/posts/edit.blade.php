@@ -12,8 +12,8 @@
             <input class="form-control" type="text" name="title" id="title" value="{{$post->title}}">
         </fieldset>
         <fieldset class="form-group row">
-            <label for="body">Post</label>
-            <textarea class="form-control" rows="6" cols="50" maxlength="300" name="body" id="body">{!!$post->body!!}</textarea>
+            <label for="summary-ckeditor">Post</label>
+            <textarea class="form-control" rows="6" cols="50" maxlength="300" name="body" id="summary-ckeditor">{!!$post->body!!}</textarea>
         </fieldset>
         <fieldset class="form-group row" hidden>
             <label for="file_img">File</label>
@@ -28,17 +28,11 @@
             <input type="file" name="file_video" id="file_video" accept=".mp4,.avi">
         </fieldset>
         <fieldset class="form-group row">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="user_only" id="user_only" {{($post->user_only) == 1 ? "checked" : ""}}>
-                <label class="form-check-label" for="user_only">User Only</label>
-            </div>
-        </fieldset>
-        <fieldset class="form-group row">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="public" id="public" {{($post->public == 1) ? "checked" : ""}}>
-                <label class="form-check-label" for="public">Public Post</label>
-            </div>
-        </fieldset>
+                <label for="visibility_select">Visibility</label>
+                <select id="visibility_select" class="custom-select" name="visibility">
+                    @include('posts.inc.visibility_options',['visibility' => $post->visibility])
+                </select>
+            </fieldset>
         <fieldset class="form-group row">
             <button class="btn btn-primary" type="submit">Submit</button>
         </fieldset>

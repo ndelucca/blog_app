@@ -19,7 +19,12 @@
                                 </span>
                             @enderror
                         </div>
-
+                        <div class="form-group row">
+                            <input id="name_first" type="text" placeholder="First Name" class="form-control" name="name_first" required autocomplete="first name">
+                        </div>
+                        <div class="form-group row">
+                                <input id="name_last" type="text" placeholder="Last Name" class="form-control" name="name_last" required autocomplete="last name">
+                            </div>
                         <div class="form-group row">
                             <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
