@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeBooleanVisibilityToString extends Migration
+class AddCharToPostsBody extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,7 @@ class ChangeBooleanVisibilityToString extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('visibility')->default('private');
-            $table->dropColumn('user_only');
-            $table->dropColumn('public');
-            
+            $table->string('body',999)->change();
         });
     }
 
@@ -28,8 +25,6 @@ class ChangeBooleanVisibilityToString extends Migration
      */
     public function down()
     {
-        $table->dropColumn('visibility');
-        $table->boolean('user_only');
-        $table->boolean('public');
+        $table->string('body',300)->change();
     }
 }

@@ -10,7 +10,6 @@
     <title>{{ config('app.name', 'blogApp') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
     <!-- 
     <script src="{{ asset('js/app.js') }}" defer></script>
     -->
@@ -18,6 +17,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @yield('header')
+
 </head>
 <body>
     <div id="app">
@@ -28,8 +30,6 @@
         </main>
     </div>
     
-    <script>
-        CKEDITOR.replace( 'summary-ckeditor' );
-    </script>
+    @yield('scripts')
 </body>
 </html>

@@ -23,4 +23,5 @@ Auth::routes();
 Route::get('/','PagesController@index');
 Route::fallback('PagesController@fallback');
 Route::resource('/posts','PostsController')->middleware('auth');
+Route::get('/users/{id}','UsersController@show')->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home');

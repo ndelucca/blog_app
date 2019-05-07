@@ -1,7 +1,13 @@
 @extends('layouts.app')
-@section('navbar')
-@include('inc.navbar_posts')
+
+@section('header')
+    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
 @endsection
+
+@section('navbar')
+    @include('inc.navbar_posts')
+@endsection
+
 @section('content')
 <div class="container">
     <form class="card" enctype="multipart/form-data" method="POST" action="{{ route('posts.update',$post->id) }}">
@@ -38,4 +44,10 @@
         </fieldset>
     </form>
 </div>
+@endsection
+
+@section('scripts')
+    <script>
+        CKEDITOR.replace( 'summary-ckeditor' );
+    </script>
 @endsection

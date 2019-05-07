@@ -1,7 +1,14 @@
 @extends('layouts.app')
-@section('navbar')
-@include('inc.navbar_posts')
+
+@section('header')
+    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+
 @endsection
+
+@section('navbar')
+    @include('inc.navbar_posts')
+@endsection
+
 @section('content')
 <div class="container">
     <form class="card" enctype="multipart/form-data" method="POST" accept-charset="UTF-8" action="{{ route('posts.store') }}">
@@ -14,7 +21,7 @@
             <label for="summary-ckeditor">Post</label>
             <textarea class="form-control" rows="6" cols="50" maxlength="300" name="body" id="summary-ckeditor"></textarea>
         </fieldset>
-        <fieldset class="form-group row" hidden>
+        <fieldset class="form-group row">
             <label for="file_img">File</label>
             <input type="file" name="file_img" id="file_img" accept=".png,.jpg,.gif">
         </fieldset>
@@ -37,4 +44,10 @@
         </fieldset>
     </form>
 </div>
+@endsection
+
+@section('scripts')
+    <script>
+        CKEDITOR.replace( 'summary-ckeditor');
+    </script>
 @endsection
