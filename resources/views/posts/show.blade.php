@@ -1,7 +1,5 @@
 @extends('layouts.app')
-@section('navbar')
-@include('inc.navbar_posts')
-@endsection
+
 @section('content')
 
     <h3>{{$post->title}}</h3>

@@ -1,10 +1,7 @@
 @extends('layouts.app')
-@section('navbar')
-@include('inc.navbar_posts')
-@endsection
+
 @section('content')
 <div class="container">
-    @include('inc.messages')
     @if(isset($posts) && !empty($posts))
     <ul class="list-group">
         @foreach($posts as $post)

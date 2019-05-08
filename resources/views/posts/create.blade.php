@@ -1,25 +1,20 @@
 @extends('layouts.app')
 
 @section('header')
-    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
-
-@endsection
-
-@section('navbar')
-    @include('inc.navbar_posts')
 @endsection
 
 @section('content')
 <div class="container">
-    <form class="card" enctype="multipart/form-data" method="POST" accept-charset="UTF-8" action="{{ route('posts.store') }}">
+    <form class="card" enctype="multipart/form-data" method="POST" onsubmit="" accept-charset="UTF-8" action="{{ route('posts.store') }}">
         @csrf
         <fieldset class="form-group row">
             <label for="title">Title</label>
-            <input class="form-control" type="text" name="title" id="title">
+        <input class="form-control" type="text" name="title" id="title" value="{{old('title')}}">
         </fieldset>
         <fieldset class="form-group row">
-            <label for="summary-ckeditor">Post</label>
-            <textarea class="form-control" rows="6" cols="50" maxlength="300" name="body" id="summary-ckeditor"></textarea>
+            <label for="ckeditor">Post</label>
+            <textarea class="form-control" rows="6" cols="50" maxlength="300" name="body" id="ckeditor" value="{{old('body')}}"></textarea>
+            {{-- <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor> --}}
         </fieldset>
         <fieldset class="form-group row">
             <label for="file_img">File</label>
@@ -47,7 +42,10 @@
 @endsection
 
 @section('scripts')
-    <script>
-        CKEDITOR.replace( 'summary-ckeditor');
-    </script>
+
+<script>
+
+    
+</script>
+
 @endsection
