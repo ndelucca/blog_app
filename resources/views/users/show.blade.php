@@ -12,6 +12,9 @@
                 case 1: echo "Moderate";break;
                 case 100: echo "Admin";break;
             }  ?></li>
+            <li class="list-group-item">Number of posts: {{ $user->postCount }}</li>
         </ul>
+        <br>
+        <a class="btn btn-primary" href="{{action('UsersController@edit',$user->id)}}">Edit</a>
     </div>
 @endsection

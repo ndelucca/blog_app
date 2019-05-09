@@ -16,9 +16,9 @@
             <textarea class="form-control" rows="6" cols="50" maxlength="300" name="body" id="ckeditor" value="{{old('body')}}"></textarea>
             {{-- <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor> --}}
         </fieldset>
-        <fieldset class="form-group row">
-            <label for="file_img">File</label>
-            <input type="file" name="file_img" id="file_img" accept=".png,.jpg,.gif">
+        <fieldset>
+            <label class="form-group row" for="file_img">Files</label>
+            <input class="form-group row" type="file" name="file_img" id="file_img" accept=".png,.jpg,.gif">
         </fieldset>
         <fieldset class="form-group row" hidden>
             <label for="file_music">File</label>

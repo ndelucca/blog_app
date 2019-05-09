@@ -1,20 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">    
+<div class="container">
     @if(isset($posts) && !empty($posts))
     <ul class="list-group">
         @foreach($posts as $post)
         <li class="list-group-item">
             <div class="post-header post-container">
                 <div class="post-title">
-                    <span>{!!$post->title!!}</span>
-                    @if($post->visibility == 'private')
-                    <span class='post-private'> (PRIVATE)</span>
-                    @elseif($post->visibility == 'public')
-                    <span class='post-public'> (PUBLIC)</span>
-                    @else
-                    <span class='post-friends'> (FRIENDS)</span>
+                    {!!$post->title!!}
+                    @if(auth()->user()->id == $post->user_id)
+                        @if($post->visibility == 'private')
+                        <span class='post-private'> (PRIVATE)</span>
+                        @elseif($post->visibility == 'public')
+                        <span class='post-public'> (PUBLIC)</span>
+                        @else
+                        <span class='post-friends'> (FRIENDS)</span>
+                        @endif
                     @endif
                 </div>
                 <div class="post-controls">
@@ -45,7 +47,7 @@
     </ul>
     {{$posts->links()}}
     @else
-        <h3 class="logo" style="text-align: center"></h3>
+        <div>No posts yet!</div>
     @endif
 </div>
 @endsection

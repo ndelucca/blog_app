@@ -20,7 +20,6 @@
 $post-border: 1px solid rgba(0, 0, 0, 0.125);
 .post-container{
   width:100%;
-  min-width: 340px;
 }
 .post-header{
   display: table;
@@ -64,4 +63,13 @@ $post-border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .post-footer{
   text-align: right;
+}
+.post-private{
+  color:$blue;
+}
+.post-public{
+  color:$red;
+}
+.post-friends{
+  color:$green;
 }

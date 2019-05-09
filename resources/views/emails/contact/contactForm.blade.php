@@ -1,5 +1,5 @@
 @component('mail::message')
-<h3>Contacto desde {{ config('app.name') }}</h3>
+<h3>Contact from {{ config('app.name') }}</h3>
 
 <ul>
     <li>Name: {{$data['name']}}</li>

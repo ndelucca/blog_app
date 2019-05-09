@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactFormMail;
+use App\Mail\ContactFormAutoResponseMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -26,6 +27,7 @@ class ContactFormController extends Controller
         if(count(Mail::failures()) > 0){
             return redirect('contact')->with('error','Try again later');
         }else{
+            Mail::to($data['email'])->send(new ContactFormAutoResponseMail());
             return redirect('contact')->with('success','Mail Sent!, We will respond as sonn as possible!');
         }
     }

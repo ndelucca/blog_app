@@ -19,12 +19,30 @@ Route::resource('posts','PostsController');
 
 */
 Auth::routes();
+//simple pages
 Route::get('/','PagesController@index');
 Route::fallback('PagesController@fallback');
 
+//user home
+Route::get('home', 'HomeController@index')->name('home');
+
+//user management
+Route::resource('users','UsersController')->middleware('auth');
+/*
+Route::get('users/{id}','UsersController@show')->middleware('auth');
+Route::get('users/{id}/edit','UsersController@edit')->middleware('auth');
+Route::put('users/{id}/update','UsersController@update')->middleware('auth');
+Route::match(['put','patch'],'users/{id}/update','UsersController@update')->middleware('auth');
+Route::get('users','UsersController@index')->middleware('auth');
+*/
+//contact form
 Route::get('contact','ContactFormController@create');
 Route::post('contact','ContactFormController@store');
 
+//posts pages
+Route::get('posts/public','PostsController@viewPublic');
+Route::get('posts/friends','PostsController@viewFriends');
+
 Route::resource('posts','PostsController')->middleware('auth');
-Route::get('users/{id}','UsersController@show')->middleware('auth');
-Route::get('home', 'HomeController@index')->name('home');
+
+

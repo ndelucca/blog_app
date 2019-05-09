@@ -10,6 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="{{url('home')}}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{url('posts')}}">Posts</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{url('contact')}}">Contact</a></li>
             </ul>
@@ -27,20 +28,25 @@
                         </li>
                     @endif*/ ?>
                 @else
-                    <li class="nav-item"><a class="nav-link create_post_btn" href="/posts/create">➕</a></li>
+                    <li class="nav-item"><a class="nav-link create_post_btn" href="/posts/create">New Post</a></li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            @if(auth()->user()->access == 100)
+                            <a class="dropdown-item" href="{{ action('UsersController@index') }}">
+                                Users
+                            </a>
+                            @endif
+                            <a class="dropdown-item" href="{{ action('UsersController@show',auth()->user()->id) }}">
+                                Profile
+                            </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
-                            </a>
-                            <a class="dropdown-item" href="{{ route('home') }}">
-                                Dash
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

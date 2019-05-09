@@ -7,19 +7,18 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ContactFormMail extends Mailable
+class ContactFormAutoResponseMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct()
     {
-        $this->data = $data;
+        //
     }
 
     /**
@@ -29,7 +28,7 @@ class ContactFormMail extends Mailable
      */
     public function build()
     {
-        $this->subject('Contact from blogg_app');
-        return $this->markdown('emails.contact.contactForm');
+        $this->subject('Contact received');
+        return $this->markdown('emails.contact.contactFormAutoResponse');
     }
 }

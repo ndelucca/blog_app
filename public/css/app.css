@@ -10692,7 +10692,6 @@ a.text-dark:focus {
 
 .post-container {
   width: 100%;
-  min-width: 340px;
 }
 
 .post-header {
@@ -10746,10 +10745,21 @@ a.text-dark:focus {
   text-align: right;
 }
 
+.post-private {
+  color: #3490dc;
+}
+
+.post-public {
+  color: #e3342f;
+}
+
+.post-friends {
+  color: #38c172;
+}
+
 .card {
   background-color: transparent;
   border: 0px solid transparent;
-  width: 250px;
   margin: 0 auto;
 }
 

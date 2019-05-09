@@ -26,12 +26,28 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user')->orderBy('created_at','desc')->paginate(10);
+        $user_id = auth()->user()->id;
+        $posts = Post::with('user')->where([['user_id','=',$user_id]])->orderBy('created_at','desc')->paginate(10);
+
         //where([['user_id','=',auth()->user()->id]])->
         //echo json_encode($posts);
         return view('posts.index')->with('posts',$posts);
     }
 
+    //these manage the general posts view depending on visibility chosen
+    public function filtered($visibility)
+    {
+        $posts = Post::with('user')->where('visibility',$visibility)->orderBy('created_at','desc')->paginate(10);
+        return view('posts.filtered')->with('posts',$posts);
+    }
+    public function viewPublic()
+    {
+        return $this->filtered('public');
+    }
+    public function viewFriends()
+    {
+        return $this->filtered('friends');
+    }
     /**
      * Show the form for creating a new resource.
      *
