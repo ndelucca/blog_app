@@ -21,6 +21,7 @@ Route::resource('posts','PostsController');
 Auth::routes();
 //simple pages
 Route::get('/','PagesController@index');
+Route::get('dictionaryRandom','PagesController@dictionaryRandom');
 Route::fallback('PagesController@fallback');
 
 //user home
