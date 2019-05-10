@@ -25,8 +25,9 @@ Route::get('dictionaryRandom','PagesController@dictionaryRandom');
 Route::fallback('PagesController@fallback');
 
 //user home
-Route::get('home', 'HomeController@index')->name('home');
-
+//disabled home for the moment
+//Route::get('home', 'HomeController@index')->name('home');
+Route::get('home','PostsController@index')->middleware('auth');
 //user management
 Route::resource('users','UsersController')->middleware('auth');
 /*
@@ -41,9 +42,11 @@ Route::get('contact','ContactFormController@create');
 Route::post('contact','ContactFormController@store');
 
 //posts pages
-Route::get('posts/public','PostsController@viewPublic');
-Route::get('posts/friends','PostsController@viewFriends');
-
+//public shows public post from everybody
+Route::get('posts/public','PostsController@viewPublic')->middleware('auth');
+//friends shows all of friends posts
+Route::get('posts/friends','PostsController@viewFriends')->middleware('auth');
+//index shows only your posts
 Route::resource('posts','PostsController')->middleware('auth');
 
 
